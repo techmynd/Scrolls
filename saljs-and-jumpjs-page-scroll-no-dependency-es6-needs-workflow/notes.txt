@@ -1,0 +1,1 @@
+open project folder in visual studio code and use live server to open index,html

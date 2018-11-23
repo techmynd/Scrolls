@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main/main.css">
+</head>
+<body>
+
+    <section class="target3">
+        <h1>Scroll me baby, <br>oh yeah</h1>
+        <button id="button">Click me</button>
+    </section>
+    <section class="target2">
+        <div class="left">
+            <h3>Look at me, weee</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam adipisci culpa corrupti cum blanditiis atque, sint voluptatum consectetur nobis sit beatae sequi praesentium fuga eligendi alias necessitatibus assumenda. Possimus, rem.</p>
+            <button id="button3">Click me</button>
+        </div>
+        
+    </section>
+    <section class="target">
+        <div class="one">
+            <h3>Keep</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit..</p>
+        </div>
+        <div class="two">
+            <h3>It</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit..</p>
+        </div>
+        <div class="three">
+            <h3>Scrolling</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit..</p>
+        </div>
+        <button id="button2">Click me</button>
+    </section>
+
+
+    <script src="jump.js"></script>
+    <script>
+
+        var jump = Jump;
+
+        var button = document.getElementById('button');
+
+        button.addEventListener('click', function (event) { 
+            jump('.target')
+        });
+
+        button2.addEventListener('click', function (event) { 
+            jump('.target2', {
+                duration: 2000,
+            })
+        });
+
+        button3.addEventListener('click', function (event) { 
+            jump('.target3', {
+                duration: 2000,
+                offset: 100
+                //easing: easeInOutQuad,
+                // callback: () => {
+                //     console.log('Completed!')
+                // }
+            })
+        });
+
+
+    </script>
+
+
+    
+</body>
+</html>
