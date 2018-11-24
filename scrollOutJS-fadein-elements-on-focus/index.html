@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MJK Experiments</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/splitting@1.0.0/dist/splitting.css">
+    
+    <style type="text/css">
+
+/*
+// SCSS
+
+
+
+// -------------------------------------------------------------
+// Variables
+
+// Colors
+$g1: #5961F9  
+$g2: #2AFADF
+$g3: #F9FEA5
+$text: #204754
+
+// Easing
+$zease: cubic-bezier(0.165, 0.84, 0.44, 1)
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275)
+
+// -------------------------------------------------------------
+// Globals
+
+html, body
+  margin: 0
+
+html
+  min-height: 100%
+  box-sizing: border-box
+  font-size: 10px
+  
+body
+  height: 100%
+  width: 100%
+  background-image: linear-gradient(180deg, $g1 0%, $g2 40%, $g3 100%)
+  background-repeat: no-repeat
+  
+*, *:before, *:after
+  box-sizing: inherit
+
+// -------------------------------------------------------------
+// Typography
+
+h1, p
+  color: $text
+  font-family: 'Nunito', sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+h1
+  margin-bottom: 1rem
+  font-size: 4rem
+
+p
+  font-size: 2rem
+  line-height: 2.8rem
+
+  &:last-child
+    margin-bottom: -6px
+
+// -------------------------------------------------------------
+// Main
+
+.site-wrap
+  max-width: 700px
+  margin: 0 auto
+  padding: 10rem 2rem
+
+section
+  margin-bottom: 10rem
+  padding: 4rem
+  background: white
+  border-radius: 8px
+  box-shadow: 0px 0px 0 1px transparentize($text, 0.97), 0px 0px 0 3px transparentize($text, 0.98)
+
+  &:last-child
+    margin-bottom: 0
+
+[data-scroll]
+  opacity: 0
+  will-change: transform, scale, opacity
+  transform: translateY(6rem) scale(0.93)
+  transition: all 1.5s $zease
+
+[data-scroll="in"] 
+  opacity: 1
+  transform: translateY(0) scale(1)
+
+// -------------------------------------------------------------
+// Headline Animation
+.splitting
+  .char
+    color: transparent
+    
+    &:after
+      visibility: visible
+      color: $text
+      opacity: 0
+      transform: translateY(30%)
+      transition: all .6s $easeOutBack
+      transition-delay: calc(.2s + (.04s * var(--char-index) ) )
+
+[data-scroll="in"] 
+  .char:after
+    opacity: 1
+    transform: translateY(0)
+
+// -------------------------------------------------------------
+// Media Queries
+
+@media (max-width: 600px)
+
+  h1
+    font-size: 3.4rem
+    line-height: 3.6rem
+
+  p
+    font-size: 1.7rem
+    line-height: 2.5rem
+
+  .site-wrap
+    padding: 6rem 1rem
+
+  section
+    margin-bottom: 6rem
+    padding: 2.4rem
+    
+
+
+ */
+
+
+html, body {
+  margin: 0;
+}
+
+html {
+  min-height: 100%;
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(180deg, #5961F9 0%, #2AFADF 40%, #F9FEA5 100%);
+  background-repeat: no-repeat;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+h1, p {
+  color: #204754;
+  font-family: "Nunito", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 4rem;
+}
+
+p {
+  font-size: 2rem;
+  line-height: 2.8rem;
+}
+p:last-child {
+  margin-bottom: -6px;
+}
+
+.site-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 10rem 2rem;
+}
+
+section {
+  margin-bottom: 10rem;
+  padding: 4rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 0px 0 1px rgba(32, 71, 84, 0.03), 0px 0px 0 3px rgba(32, 71, 84, 0.02);
+}
+section:last-child {
+  margin-bottom: 0;
+}
+
+[data-scroll] {
+  opacity: 0;
+  will-change: transform, scale, opacity;
+  -webkit-transform: translateY(6rem) scale(0.93);
+          transform: translateY(6rem) scale(0.93);
+  transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+[data-scroll="in"] {
+  opacity: 1;
+  -webkit-transform: translateY(0) scale(1);
+          transform: translateY(0) scale(1);
+}
+
+.splitting .char {
+  color: transparent;
+}
+.splitting .char:after {
+  visibility: visible;
+  color: #204754;
+  opacity: 0;
+  -webkit-transform: translateY(30%);
+          transform: translateY(30%);
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-delay: calc(.2s + (.04s * var(--char-index) ) );
+}
+
+[data-scroll="in"] .char:after {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 3.4rem;
+    line-height: 3.6rem;
+  }
+
+  p {
+    font-size: 1.7rem;
+    line-height: 2.5rem;
+  }
+
+  .site-wrap {
+    padding: 6rem 1rem;
+  }
+
+  section {
+    margin-bottom: 6rem;
+    padding: 2.4rem;
+  }
+}
+    
+
+    </style>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    
+    <div class="container">
+    
+<div class="site-wrap">
+
+  <section data-scroll>
+    <h1 data-splitting>Scroll on down</h1>
+    <p>Consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor
+      at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur
+      pariaturlores sunt esse magni, ut, dignissimos.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, deserunt facilis et iste corrupti omnis tenetur est.
+      Iste ut est dicta dolor itaque adipisci, dolorum minima, veritatis earum provident error molestias. Ratione magni illo
+      sint vel velit ut excepturi consectetur suscipit, earum modi accusamus voluptatem nostrum, praesentium numquam, reiciendis
+      voluptas sit id quisquam. Consequatur in quis reprehenderit modi perspiciatis necessitatibus saepe, quidem, suscipit iure
+      natus dignissimos ipsam, eligendi deleniti accusantium, rerum quibusdam fugit perferendis et optio recusandae sed ratione.
+      Culpa, dolorum reprehenderit harum ab voluptas fuga, nisi eligendi natus maiores illum quas quos et aperiam aut doloremque
+      optio maxime fugiat doloribus. Eum dolorum expedita quam, nesciunt</p>
+    <p>Lorem ipsum cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores
+      omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni,
+      ut, dignissimos.</p>
+    <p>Adipisicing elit. Tempore tempora rerum.</p>
+  </section>
+
+  <section data-scroll>
+    <h1 data-splitting>Articles fading in</h1>
+    <p>Consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor
+      at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur
+      pariaturlores sunt esse magni, ut, dignissimos.</p>
+    <p>Lorem ipsum cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores
+      omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni,
+      ut, dignissimos. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero
+      ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam!
+      Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+    <p>Lorem ipsum cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores
+      omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores.</p>
+  </section>
+
+  <section  data-scroll>
+    <h1 data-splitting>Character splitting</h1>
+    <p>Consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor
+      at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur
+      pariaturlores sunt esse magni, ut, dignissimos.</p>
+    <p>Lorem ipsum tempora in cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores
+      omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni,
+      ut, dignissimos. Adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariaturlores
+      sunt esse magni. Tempore tempora rerum, est autem cupiditate, corporis a qui libero.</p>
+  </section>
+
+  <section  data-scroll>
+    <h1 data-splitting>Colors changing</h1>
+    <p>Consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem
+      dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora
+      in aspernatur pariaturlores sunt esse magni, ut, dignissimos.</p>
+    <p>Lorem ipsum cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores
+      omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni,
+      ut, dignissimos.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, deserunt facilis et iste corrupti omnis tenetur est.
+      Iste ut est dicta dolor itaque adipisci, dolorum minima, veritatis earum provident error molestias. Ratione magni illo
+      sint vel velit ut excepturi consectetur suscipit, earum modi accusamus voluptatem nostrum, praesentium numquam, reiciendis
+      voluptas sit id quisquam. Consequatur in quis reprehenderit modi perspiciatis necessitatibus saepe, quidem, suscipit
+      iure natus dignissimos ipsam, eligendi deleniti accusantium, rerum quibusdam fugit perferendis et optio recusandae sed
+      ratione. Culpa, dolorum reprehenderit harum ab voluptas fuga, nisi eligendi natus maiores illum quas quos et aperiam
+      aut doloremque optio maxime fugiat doloribus. Eum dolorum expedita quam, nesciunt</p>
+    <p>Adipisicing elit. Tempore tempora rerum.</p>
+  </section>
+
+  <section  data-scroll>
+    <h1 data-splitting>The end</h1>
+    <p>Consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem
+      dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora
+      in aspernatur pariaturlores sunt esse magni, ut, dignissimos.</p>
+    <p>Adipisicing elit. Tempore tempora rerum.</p>
+    <p>Lorem ipsum cupiditate, corporis a qui libero ipsum tempora in delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores
+      omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam tempora in dolores sunt esse magni,
+      ut, dignissimos.</p>
+  </section>
+
+</div>    
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <script src="https://unpkg.com/splitting@1.0.0/dist/splitting.js"></script>
+    <script src="scroll-out.min.js"></script>
+
+<script>
+Splitting();
+ScrollOut({
+  threshold: 0.2,
+  once: true 
+});
+
+</script>
+
+  </body>
+</html>
